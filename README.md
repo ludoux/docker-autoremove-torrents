@@ -33,7 +33,14 @@ Here are some example snippets to help create your container
 **docker-cli**
 
 ```shell 
-docker run dantebarba/autoremove-torrents:latest -v /path/to/config.yml:/app/config.yml -e OPTS=customoptions
+docker run autoremove-torrents:latest \
+-v /opt/autoremove-torrents/config:/app \
+-v /opt/autoremove-torrents/logs/autoremove-torrents.log:/var/log/autoremove-torrents.log \
+-e PUID=1000 \
+-e PGID=1000 \
+-e TZ=Europe/London \
+-e OPTS=customoptions \
+--name autoremove-torrents
 ```
 
 **docker-compose**
@@ -46,7 +53,7 @@ services:
         container_name: auto-remove-torrents
         volumes:
             - '/opt/autoremove-torrents/config:/app'
-            - '/opt//autoremove-torrents/logs/autoremove-torrents.log:/var/log/autoremove-torrents.log'
+            - '/opt/autoremove-torrents/logs/autoremove-torrents.log:/var/log/autoremove-torrents.log'
         environment:
              - PUID=1000
              - PGID=1000
