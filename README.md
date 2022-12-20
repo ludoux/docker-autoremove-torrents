@@ -1,4 +1,4 @@
-# autoremove-torrents image
+# docker-autoremove-torrents
 
 Image for the PyPi module autoremove-torrents. 
 
@@ -15,7 +15,55 @@ https://pypi.org/project/autoremove-torrents/
 
 ## Usage
 
-    docker run dantebarba/autoremove-torrents:latest -v /path/to/config.yml:/app/config.yml -e OPTS=customoptions
+1. Clone the repository. e.g
+
+```shell
+git clone https://github.com/Jarsky/docker-autoremove-torrents.git
+```
+
+2. Create a docker image
+```shell
+cd docker-autoremove-torrents
+docker build -t auto-remove-torrents:latest .
+```
+
+3. Deploy your container using the image
+Here are some example snippets to help create your container
+
+**docker-cli**
+
+```shell 
+docker run dantebarba/autoremove-torrents:latest -v /path/to/config.yml:/app/config.yml -e OPTS=customoptions
+```
+
+**docker-compose**
+
+```shell
+---
+version: '3.7'
+services:
+    autoremove-torrents:
+        container_name: auto-remove-torrents
+        volumes:
+            - '/opt/autoremove-torrents/config:/app'
+            - '/opt//autoremove-torrents/logs/autoremove-torrents.log:/var/log/autoremove-torrents.log'
+        environment:
+             - PUID=1000
+             - PGID=1000
+             - TZ=Europe/London
+             - OPTS=customoptions
+        image: 'auto-remove-torrents:latest'
+        networks:
+            - default
+        restart: unless-stopped
+networks:
+ default:
+   driver: bridge
+   external: true
+```
+Run: `docker-compose up -d`
+
+## Paramaters
 
 OPTS can take the following arguments:
 
