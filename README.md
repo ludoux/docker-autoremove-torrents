@@ -33,14 +33,14 @@ Here are some example snippets to help create your container
 **docker-cli**
 
 ```shell 
-docker run autoremove-torrents:latest \
+docker run auto-remove-torrents:latest \
 -v /opt/autoremove-torrents/config:/app \
 -v /opt/autoremove-torrents/logs/autoremove-torrents.log:/var/log/autoremove-torrents.log \
 -e PUID=1000 \
 -e PGID=1000 \
 -e TZ=Europe/London \
 -e OPTS=customoptions \
---name autoremove-torrents
+--name auto-remove-torrents
 ```
 
 **docker-compose**
