@@ -20,5 +20,6 @@ COPY config.example.yml config.yml
 
 ENV OPTS '-c /app/config.yml'
 ENV CRON '*/5 * * * *'
+ENV TZ Asia/Shanghai
 
 ENTRYPOINT ["/bin/sh", "/usr/bin/cron.sh"]
