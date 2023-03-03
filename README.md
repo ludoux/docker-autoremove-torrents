@@ -24,7 +24,7 @@ git clone https://github.com/ludoux/docker-autoremove-torrents.git
 2. Create a docker image
 ```shell
 cd docker-autoremove-torrents
-docker build -t auto-remove-torrents:latest .
+docker build -t autoremove-torrents:latest .
 ```
 
 3. Deploy your container using the image
@@ -33,14 +33,14 @@ Here are some example snippets to help create your container
 **docker-cli**
 
 ```shell 
-docker run auto-remove-torrents:latest \
+docker run autoremove-torrents:latest \
 -v /opt/autoremove-torrents/config:/app \
 -v /opt/autoremove-torrents/logs/autoremove-torrents.log:/var/log/autoremove-torrents.log \
 -e PUID=1000 \
 -e PGID=1000 \
 -e TZ=Asia/Shanghai \
 -e OPTS=customoptions \
---name auto-remove-torrents
+--name autoremove-torrents
 ```
 
 **docker-compose**
@@ -50,7 +50,7 @@ docker run auto-remove-torrents:latest \
 version: '3.7'
 services:
     autoremove-torrents:
-        container_name: auto-remove-torrents
+        container_name: autoremove-torrents
         volumes:
             - '/opt/autoremove-torrents/config:/app'
             - '/opt/autoremove-torrents/logs/autoremove-torrents.log:/var/log/autoremove-torrents.log'
@@ -59,7 +59,7 @@ services:
              - PGID=1000
              - TZ=Asia/Shanghai
              - OPTS=customoptions
-        image: 'auto-remove-torrents:latest'
+        image: 'autoremove-torrents:latest'
         networks:
             - default
         restart: unless-stopped
