@@ -1,7 +1,7 @@
 FROM python:3.8.5-slim
 
-ARG GIT_REPO='https://github.com/Jorman/autoremove-torrents.git'
-ARG BRANCH='patch-1'
+ARG GIT_REPO='https://github.com/ludoux/autoremove-torrents.git'
+ARG BRANCH='master'
 
 WORKDIR /app
 
