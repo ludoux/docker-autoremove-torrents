@@ -18,7 +18,7 @@ https://pypi.org/project/autoremove-torrents/
 1. Clone the repository. e.g
 
 ```shell
-git clone https://github.com/Jarsky/docker-autoremove-torrents.git
+git clone https://github.com/ludoux/docker-autoremove-torrents.git
 ```
 
 2. Create a docker image
@@ -38,7 +38,7 @@ docker run auto-remove-torrents:latest \
 -v /opt/autoremove-torrents/logs/autoremove-torrents.log:/var/log/autoremove-torrents.log \
 -e PUID=1000 \
 -e PGID=1000 \
--e TZ=Europe/London \
+-e TZ=Asia/Shanghai \
 -e OPTS=customoptions \
 --name auto-remove-torrents
 ```
@@ -57,7 +57,7 @@ services:
         environment:
              - PUID=1000
              - PGID=1000
-             - TZ=Europe/London
+             - TZ=Asia/Shanghai
              - OPTS=customoptions
         image: 'auto-remove-torrents:latest'
         networks:
